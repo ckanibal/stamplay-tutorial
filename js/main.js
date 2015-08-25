@@ -164,28 +164,6 @@ $("#contactform").submit(function (event) {
 
 });
 
-/*
-$("#signupform").submit(function (event) {
-  event.preventDefault();
-  var email-data = $("#loginform input[name='email']").val();
-  var password-data = $("#loginform input[name='password']").val();
-
-  var registrationData = {
-     email : email-data,
-     password: password-data
-   };
-
-   user.signup(registrationData).then(function(){
-     // User is now registered
-     return user.save();
-   }).then(function(){
-     // User is saved successfully side
-     user.login(registrationData);
-     window.location.href = "/index.html";
-   })
-});
-*/
-
 $("#loginform").submit(function (event) {
   console.log("try login");
   event.preventDefault();
