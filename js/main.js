@@ -4,11 +4,12 @@ var user = new Stamplay.User().Model;
 
 
 $(document).ready(function () {
-
+  /*
   $('#login').on('click', function (e) {
     e.preventDefault();
     user.login('facebook');
   });
+  */
 
   $('#logout').on('click', function (e) {
     e.preventDefault();
@@ -161,6 +162,42 @@ $("#contactform").submit(function (event) {
     window.location.href = "/index.html";
   });
 
+});
+
+$("#signup-submit").submit(function (event) {
+  event.preventDefault();
+  var email-data = $("#loginform input[name='email']").val();
+  var password-data = $("#loginform input[name='password']").val();
+
+  var registrationData = {
+     email : email-data,
+     password: password-data
+   };
+
+   user.signup(registrationData).then(function(){
+     // User is now registered
+     return user.save();
+   }).then(function(){
+     // User is saved successfully side
+     user.login(registrationData);
+     window.location.href = "/index.html";
+   })
+});
+
+$("#login-submit").submit(function (event) {
+  event.preventDefault();
+  var email-data = $("#loginform input[name='email']").val();
+  var password-data = $("#loginform input[name='password']").val();
+
+  var loginData = {
+     email : email-data,
+     password: password-data
+   };
+
+   // login user
+   user.login(registrationData).then(function() {
+     window.location.href = "/index.html";
+   });   
 });
 
 
