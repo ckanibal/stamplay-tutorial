@@ -1,4 +1,4 @@
-Stamplay.init('hackernews');
+Stamplay.init('tc2026');
 var tags = new Stamplay.Cobject('post').Collection;
 var user = new Stamplay.User().Model;
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
         /* Retrieving the user's points */
         $.ajax({
           method: 'GET',
-          url: '/api/gm/v0/challenges/hnkarma/userchallenges/' + userId,
+          url: '/api/gm/v0/challenges/karma/userchallenges/' + userId,
           params: {
             select: 'points'
           },
@@ -164,7 +164,8 @@ $("#contactform").submit(function (event) {
 
 });
 
-$("#signup-submit").submit(function (event) {
+/*
+$("#signupform").submit(function (event) {
   event.preventDefault();
   var email-data = $("#loginform input[name='email']").val();
   var password-data = $("#loginform input[name='password']").val();
@@ -183,23 +184,25 @@ $("#signup-submit").submit(function (event) {
      window.location.href = "/index.html";
    })
 });
+*/
 
-$("#login-submit").submit(function (event) {
+$("#loginform").submit(function (event) {
+  console.log("try login");
   event.preventDefault();
-  var email-data = $("#loginform input[name='email']").val();
-  var password-data = $("#loginform input[name='password']").val();
+  var email = $("#loginform input[name='email']").val();
+  var password = $("#loginform input[name='pass']").val();
 
   var loginData = {
-     email : email-data,
-     password: password-data
+     email : email,
+     password: password
    };
 
    // login user
-   user.login(registrationData).then(function() {
+   user.login(email, password).then(function() {
+     console.log("successfully logged in!");
      window.location.href = "/index.html";
-   });   
+   });
 });
-
 
 $('body').on('click', 'a.voteelem', function (e) {
   e.preventDefault();
